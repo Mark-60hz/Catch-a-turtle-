@@ -20,7 +20,41 @@ spot.penup()
 #-------Background color--------
 wn=trtl.Screen()
 wn.bgcolor("grey")
-wn.title("This is my screen title!")
+# Game start
+game_start = False
+start = trtl.Turtle()
+
+start.shape("triangle")
+start.shapesize(5, 10, 0)
+start.color("white")
+
+def start_game(x, y):
+  global game_start
+  game_start = True
+  start.hideturtle()
+start.onclick(start_game)
+
+while not(game_start):
+  spot.hideturtle()
+  spot.showturtle()
+  
+
+
+#add custom colors in the colors list
+colors = ["yellow", "red", "green", "olive", "aquamarine", "orange", "purple", "pink", "medium purple", "seashell", "navy"]
+def isosceles_triangle_clicked(x, y):
+  global timer
+  if timer_up == False:
+    update_score()
+    change_color()
+    change_size()
+    change_position()
+
+def change_color():
+  spot.color(rand.choice(colors))
+  spot.stamp()
+  spot.color("blue")
+
 #-----game functions--------
 def spot_clicked(x,y):
   size = rand.randint(1, 10)
